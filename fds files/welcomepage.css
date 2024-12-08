@@ -1,82 +1,18 @@
-header {
-    width: 100%;
-    height: 50px; /* Adjust height dynamically */
-    padding: 15px 10px;
-    background-color: #000; /* Black background */
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space out the title and user icon */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
-    box-sizing: border-box;/* Optional separator line */
-}
-
-/* Header content alignment */
-.header-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: flex-end; /* Push the icon to the right */
-}
-
-/* Dropdown container */
-.dropdown {
-    position: relative; /* Needed for dropdown positioning */
-    display: inline-block;
-}
-
-/* User icon */
-.user-icon {
-    width: 40px; /* Adjust size as needed */
-    height: 40px; /* Adjust size as needed */
-    border-radius: 50%; /* Make the icon circular */
-    cursor: pointer;
-    object-fit: cover; /* Ensure the image fits perfectly without distortion */
-    display: block; /* Show pointer on hover */
-}
-
-/* Dropdown menu */
-.dropdown-menu {
-    display: none; /* Hidden by default */
-    position: absolute;
-    right: 0; /* Align to the right of the dropdown container */
-    top: 50px; /* Position below the icon */
-    background-color: #000; /* Match header background */
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Optional border */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    z-index: 1000;
-    overflow: hidden; /* Prevent items from overflowing */
-    min-width: 150px; /* Set minimum width for dropdown */
-}
-
-/* Dropdown menu links */
-.dropdown-menu a {
-    display: block;
-    padding: 10px 15px;
-    color: #fff;
-    text-decoration: none; /* Remove underline */
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-/* Dropdown menu link hover effect */
-.dropdown-menu a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
-}
-
-/* Show dropdown menu on click */
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-    display: block; /* Show the menu */
-}
 
 /* Body styles: black background, centered content */
+@keyframes fade-in{
+    0%{
+        opacity: 0 ;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
-
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #000; /* Black background */
     color: #fff;
     height: 100vh;
@@ -99,19 +35,21 @@ body {
     top: 0;
     left: 0;
     flex: 3;
-    width: 100%;
+    width: 98%;
     height: 100%;
     z-index: -1; /* Place video behind other elements */
     overflow: hidden; /* Prevent video overflow */
+    margin-left: 20px;
 }
 
 /* Video styling */
 .background-video {
     flex: 3;
     object-fit: cover; /* Ensure the video covers the entire background area */
-    width: 74%;
-    height: 91%;
-    transform: translateY(60px);
+    width: 76%;
+    height: 95%;
+    transform: translateY(20px);
+    border-bottom: 10px;
     border-radius: 10px;
 }
 
@@ -123,6 +61,9 @@ body {
     justify-content: center;
     border-radius: 10px;
     position: relative;
+    animation: fade-in 2s;
+
+    margin-left: 30px;
 }
 
 /* Main heading styles */
@@ -141,27 +82,30 @@ body {
 
 /* Side menu container */
 .side-menu {
-    flex: 1; /* Takes 25% of the width */
+    flex: 0.9; /* Takes 25% of the width */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 10px;
-    height: 100%; 
+    height: 97%; 
+    transform: translateY(10px);
 }
 
 /* Individual menu items */
 .menu-item {
-    background: rgb(26, 26, 27); /* Semi-transparent background */
+    background: rgb(20, 20, 20); /* Semi-transparent background */
+    background-image: url('images/marble.jpg');
+    background-position: bottom;
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(120, 109, 109, 0.522);
     text-align: center;
-    border: 0.5px ridge rgba(255, 255, 255, 0.2);
+    border: 0.5px ridge rgba(212, 181, 181, 0.212);
     border-radius: 5px;
     overflow: hidden;
     transition: transform 0.3s ease;
     height: calc((100% - 10px) / 3); /* Divide height equally across 3 items, with spacing */
     margin-bottom: 15px;/* Ensures all items fit within the height */
 }
+
 
 .menu-item:last-child {
     margin-bottom: 5; /* Remove spacing after the last item */
@@ -187,6 +131,107 @@ body {
     text-transform: uppercase;
     transform: translateY(-6px);
     font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
     font-style: normal;
 }
+
+
+/* floating menu */
+.floating-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 21.5%;
+    background-color: rgb(18, 18, 17);
+    color: #fffaca;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 20px;
+    margin-left: 80px;
+    margin-top: 80px;
+    border-radius: 10px;
+  }
+  
+  /* Button styling */
+.menu-icon-button {
+    background: none;
+    border: none;
+    color: rgb(85, 107, 47);
+    cursor: pointer;
+    font-size: 30px; /* Adjust the icon size */
+    z-index: 1001;
+    margin-left: -10px;
+    margin-top: 5px;
+}
+  
+.menu-icon-button i {
+    font-size: 29px; /* Ensure the icon size is large enough */
+  }
+  
+  /* Menu options */
+.menu-options {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    gap: 0px;
+  }
+  
+.menu-options li a {
+    color: #fffbd7;
+    text-decoration: none;
+    font-size: 11px;
+    padding: 5px 5px;
+    transition: 0.3s ease;
+  }
+
+.sub{
+    margin-top: 7px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+
+.menu-options li a:hover {
+    background-color: #333;
+    border-radius: 5px;  
+}
+  
+  /* Dropdown menu styles */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1002;
+    margin-top: -69px;  /* Position it below the button */
+    margin-left: -90px;    /* Align the dropdown with the button */
+  }
+  
+.dropdown ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.dropdown ul li {
+    margin: 10px 0;
+}
+  
+.dropdown ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+  
+  .dropdown ul li a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+  
